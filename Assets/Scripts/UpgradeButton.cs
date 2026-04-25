@@ -18,6 +18,11 @@ public class UpgradeButton : MonoBehaviour
         _button.onClick.AddListener(OnClick);
     }
 
+    private void OnDisable()
+    {
+        _button.onClick.RemoveListener(OnClick);
+    }
+
     private void OnClick()
     {
         Clicked?.Invoke();  

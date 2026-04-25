@@ -3,8 +3,8 @@
 public class UpgradeButtonHandler : MonoBehaviour
 {
     [SerializeField] private UpgradeButton _button;
-    [SerializeField] private Attribute _attribute;
-    [SerializeField] private CanvasAttribute _canvas;
+    [SerializeField] private CharacterAttributes _attributes;
+    [SerializeField] private AttributeType _attributeType;
 
     private void OnEnable()
     {
@@ -18,8 +18,7 @@ public class UpgradeButtonHandler : MonoBehaviour
 
     private void AddValueToSystem()
     {
-        _attribute.TryUpgrade();
-        _canvas.UpdateExpirience(_attribute.CurrentExpirience);
-        _canvas.UpdateLevel(_attribute.Level);
+        _attributes.AddExperience(_attributeType);
+        _attributes.TryUpgrade(_attributeType);
     }
 }

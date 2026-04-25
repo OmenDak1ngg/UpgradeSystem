@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.UIElements;
+
 public class ModelChanger : MonoBehaviour, IUpgradable
 {
     [SerializeField] private Model[] _models;
@@ -8,14 +8,21 @@ public class ModelChanger : MonoBehaviour, IUpgradable
 
     private void Awake()
     {
+        if (_models == null || _models.Length == 0)
+        {
+            Debug.LogError("ModelChanger: models array is empty", this);
+            enabled = false;
+            return;
+        }
+
         _currentModel = _models[0];
     }
 
     public void UpgradeByLevel(int level)
     {
-        Model matchingModel = null; 
+        Model matchingModel = null;
         int maxModelLevel = -1;
-         
+
         foreach (var model in _models)
         {
             if (model.Level <= level && model.Level > maxModelLevel)
@@ -28,7 +35,7 @@ public class ModelChanger : MonoBehaviour, IUpgradable
         if (matchingModel == null)
             return;
 
-        _currentModel.MeshFilter.mesh = matchingModel.MeshFilter.sharedMesh;
-        _currentModel.Renderer.material = matchingModel.Renderer.sharedMaterial;
+        _currentModel.MeshFilter.sharedMesh = matchingModel.MeshFilter.sharedMesh;
+        _currentModel.Renderer.sharedMaterial = matchingModel.Renderer.sharedMaterial;
     }
 }

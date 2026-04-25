@@ -1,9 +1,11 @@
 ﻿using TMPro;
 using UnityEngine;
+
 public class CanvasAttribute : MonoBehaviour
 {
     [SerializeField] private UserInput _userInput;
-    [SerializeField] private Attribute _attribute;
+    [SerializeField] private CharacterAttributes _attributes;
+    [SerializeField] private AttributeType _attributeType;
 
     [SerializeField] private TextMeshProUGUI _TMPAttributeName;
     [SerializeField] private TextMeshProUGUI _TMPCurrentExpirience;
@@ -15,36 +17,39 @@ public class CanvasAttribute : MonoBehaviour
     {
         _canvas = GetComponent<Canvas>();
         _canvas.enabled = false;
-        _TMPAttributeName.text = _attribute.Name;
-        UpdateExpirience(_attribute.CurrentExpirience);
-        UpdateLevel(_attribute.Level);
+
+        Refresh();
     }
 
     private void OnEnable()
     {
         _userInput.ClickedShowUpgrades += ChangeState;
+        _attributes.AttributeChanged += OnAttributeChanged;
     }
 
     private void OnDisable()
     {
         _userInput.ClickedShowUpgrades -= ChangeState;
+        _attributes.AttributeChanged -= OnAttributeChanged;
+    }
+
+    private void OnAttributeChanged(AttributeType type)
+    {
+        if (type != _attributeType)
+            return;
+
+        Refresh();
     }
 
     private void ChangeState()
     {
-        if (_canvas.enabled == false)
-            _canvas.enabled = true;
-        else
-            _canvas.enabled = false;
+        _canvas.enabled = !_canvas.enabled;
     }
 
-    public void UpdateExpirience(int value)
+    private void Refresh()
     {
-        _TMPCurrentExpirience.text = value.ToString();
-    }
-
-    public void UpdateLevel(int value)
-    {
-        _TMPCurrentLevel.text = value.ToString();
+        _TMPAttributeName.text = _attributeType.ToString();
+        _TMPCurrentExpirience.text = _attributes.GetCurrentExperience(_attributeType).ToString();
+        _TMPCurrentLevel.text = _attributes.GetLevel(_attributeType).ToString();
     }
 }

@@ -3,20 +3,29 @@ using UnityEngine;
 public class MoverUpgradeHandler : MonoBehaviour
 {
     [SerializeField] private PlayerMover _mover;
-    [SerializeField] private Attribute _attribute;
+    [SerializeField] private CharacterAttributes _attributes;
+    [SerializeField] private AttributeType _attributeType = AttributeType.Agility;
 
     private void OnEnable()
     {
-        _attribute.Upgraded += UpdateSpeed;
+        _attributes.AttributeChanged += UpdateSpeed;
     }
 
     private void OnDisable()
     {
-        _attribute.Upgraded -= UpdateSpeed;
+        _attributes.AttributeChanged -= UpdateSpeed;
     }
 
-    private void UpdateSpeed()
+    private void Start()
     {
-        _mover.UpgradeByLevel(_attribute.Level);
+        UpdateSpeed(_attributeType);
+    }
+
+    private void UpdateSpeed(AttributeType type)
+    {
+        if (type != _attributeType)
+            return;
+
+        _mover.UpgradeByLevel(_attributes.GetLevel(_attributeType));
     }
 }

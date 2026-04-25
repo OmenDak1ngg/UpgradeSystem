@@ -273,18 +273,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: 0
-  _meshFilter: {fileID: 128658558}
-  _renderer: {fileID: 128658557}
---- !u!23 &128658557 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 1af6c9d4792b975498541f34267aefc6, type: 3}
-  m_PrefabInstance: {fileID: 489908693}
-  m_PrefabAsset: {fileID: 0}
---- !u!33 &128658558 stripped
-MeshFilter:
-  m_CorrespondingSourceObject: {fileID: -5754084199372789682, guid: 1af6c9d4792b975498541f34267aefc6, type: 3}
-  m_PrefabInstance: {fileID: 489908693}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &150944858
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,7 +389,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _userInput: {fileID: 1537540317}
-  _attribute: {fileID: 1742673094}
+  _attributes: {fileID: 1949136358}
+  _attributeType: 0
   _TMPAttributeName: {fileID: 1304735510}
   _TMPCurrentExpirience: {fileID: 831411196}
   _TMPCurrentLevel: {fileID: 1363537786}
@@ -674,8 +663,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 423441942}
-  _attribute: {fileID: 1742673094}
-  _canvas: {fileID: 150944864}
+  _attributes: {fileID: 1949136358}
+  _attributeType: 0
 --- !u!4 &364339888
 Transform:
   m_ObjectHideFlags: 0
@@ -826,7 +815,7 @@ GameObject:
   - component: {fileID: 423441943}
   - component: {fileID: 423441942}
   m_Layer: 5
-  m_Name: Button
+  m_Name: upgradeButtonStrength
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1425,7 +1414,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _modelChanger: {fileID: 787571747}
-  _attribute: {fileID: 1742673094}
+  _attributes: {fileID: 1949136358}
+  _attributeType: 0
 --- !u!1 &1080210557
 GameObject:
   m_ObjectHideFlags: 0
@@ -2198,56 +2188,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1742673091
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1742673093}
-  - component: {fileID: 1742673094}
-  m_Layer: 0
-  m_Name: Attribtue - Agility
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1742673093
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742673091}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 818.17395, y: 595.4397, z: -117.12549}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1742673094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742673091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c40564855e7cc4347aae3d7f366c049a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _name: Agility
-  _upgradeMultiplier: 1.2
-  _currentExpirience: 0
-  _expiritenceToUpgrade: 100
-  _level: 0
-  _addedValue: 14
 --- !u!1 &1814870075
 GameObject:
   m_ObjectHideFlags: 0
@@ -2260,7 +2200,7 @@ GameObject:
   - component: {fileID: 1814870078}
   - component: {fileID: 1814870077}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Attribute - strength
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2326,6 +2266,121 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814870075}
   m_CullTransparentMesh: 1
+--- !u!1 &1949136357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1949136362}
+  - component: {fileID: 1949136358}
+  - component: {fileID: 1949136361}
+  - component: {fileID: 1949136360}
+  - component: {fileID: 1949136359}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1949136358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949136357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 055136da92882384693310f38576d5a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attributes:
+  - type: 0
+    level: 0
+    currentExperience: 0
+    experienceToUpgrade: 100
+    upgradeMultiplier: 1.2
+    addedExperience: 40
+  - type: 1
+    level: 0
+    currentExperience: 10
+    experienceToUpgrade: 100
+    upgradeMultiplier: 1.1
+    addedExperience: 50
+--- !u!114 &1949136359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949136357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 721680dc2d64b924488656307b24eb74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseSpeed: 5
+  _speedUpgradeValue: 0.5
+--- !u!143 &1949136360
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949136357}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1949136361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949136357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c0f67c1a90c53541b4f1f6dd570d97d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _models:
+  - {fileID: 128658556}
+  - {fileID: 5466231732258462146, guid: 0c3151394c72be048aa0868480515e0e, type: 3}
+  - {fileID: 3981656018925460385, guid: 1d205d9a885900247b63125f8ad05752, type: 3}
+--- !u!4 &1949136362
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949136357}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.47956422, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2336,10 +2391,10 @@ SceneRoots:
   - {fileID: 150944863}
   - {fileID: 1692307219}
   - {fileID: 186444327}
-  - {fileID: 1742673093}
-  - {fileID: 364339888}
   - {fileID: 1285832154}
   - {fileID: 1537540318}
   - {fileID: 890028034}
   - {fileID: 787571748}
   - {fileID: 489908693}
+  - {fileID: 1949136362}
+  - {fileID: 364339888}

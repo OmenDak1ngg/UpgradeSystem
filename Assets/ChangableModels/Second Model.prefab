@@ -82,15 +82,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: 3
-  _meshFilter: {fileID: 8375357315985423534}
-  _renderer: {fileID: 6043769485311559780}
---- !u!23 &6043769485311559780 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 1af6c9d4792b975498541f34267aefc6, type: 3}
-  m_PrefabInstance: {fileID: 4908463940242363616}
-  m_PrefabAsset: {fileID: 0}
---- !u!33 &8375357315985423534 stripped
-MeshFilter:
-  m_CorrespondingSourceObject: {fileID: -5754084199372789682, guid: 1af6c9d4792b975498541f34267aefc6, type: 3}
-  m_PrefabInstance: {fileID: 4908463940242363616}
-  m_PrefabAsset: {fileID: 0}
