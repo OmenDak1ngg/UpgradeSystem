@@ -4,17 +4,12 @@
 public class Model : MonoBehaviour
 {
     [SerializeField] private int _level;
+    [SerializeField] private MeshRenderer _renderer;
 
-    private MeshFilter _meshFilter;
-    private MeshRenderer _renderer;
+    [SerializeField] private MeshFilter _filter;
+
+    public MeshRenderer Renderer => _renderer;
+    public MeshFilter Filter => _filter;
 
     public int Level => _level;
-    public MeshRenderer Renderer => _renderer;
-    public MeshFilter MeshFilter => _meshFilter;
-
-    private void Awake()
-    {
-        _meshFilter = GetComponent<MeshFilter>();
-        _renderer = GetComponent<MeshRenderer>();
-    }
 }

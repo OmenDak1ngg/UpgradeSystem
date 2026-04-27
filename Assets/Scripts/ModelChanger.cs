@@ -35,7 +35,7 @@ public class ModelChanger : MonoBehaviour, IUpgradable
         if (matchingModel == null)
             return;
 
-        _currentModel.MeshFilter.sharedMesh = matchingModel.MeshFilter.sharedMesh;
+        _currentModel.Filter.sharedMesh = matchingModel.Filter.sharedMesh;
         _currentModel.Renderer.sharedMaterial = matchingModel.Renderer.sharedMaterial;
     }
 }
