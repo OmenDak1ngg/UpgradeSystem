@@ -14,4 +14,6 @@ public class AttributeSaveEntry
 public class UpgradeSaveData
 {
     public List<AttributeSaveEntry> attributes = new();
+
+    public string hash;
 }

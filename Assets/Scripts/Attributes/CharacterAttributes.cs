@@ -54,10 +54,7 @@ public class CharacterAttributes : MonoBehaviour
             data.currentExperience -= data.experienceToUpgrade;
             data.level++;
 
-            data.experienceToUpgrade = Mathf.Max(
-                1,
-                Mathf.RoundToInt(data.experienceToUpgrade * data.upgradeMultiplier)
-            );
+            data.experienceToUpgrade = GetExpirienceFoLevel(data);
 
             upgraded = true;
         }
@@ -69,6 +66,17 @@ public class CharacterAttributes : MonoBehaviour
 
             Save();
         }
+    }
+
+    private int GetExpirienceFoLevel(AttributeData data)
+    {
+        if (data.level <= 0)
+            return data.experiencePerLevel[0];
+
+        if (data.level - 1 >= data.experiencePerLevel.Length)
+            return data.experiencePerLevel[^1];
+
+        return data.experiencePerLevel[data.level - 1];
     }
 
     private void Save()

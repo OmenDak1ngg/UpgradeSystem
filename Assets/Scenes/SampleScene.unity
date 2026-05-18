@@ -273,6 +273,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: 0
+  _renderer: {fileID: 128658557}
+  _filter: {fileID: 128658558}
+--- !u!23 &128658557 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 1af6c9d4792b975498541f34267aefc6, type: 3}
+  m_PrefabInstance: {fileID: 489908693}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &128658558 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: -5754084199372789682, guid: 1af6c9d4792b975498541f34267aefc6, type: 3}
+  m_PrefabInstance: {fileID: 489908693}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &150944858
 GameObject:
   m_ObjectHideFlags: 0

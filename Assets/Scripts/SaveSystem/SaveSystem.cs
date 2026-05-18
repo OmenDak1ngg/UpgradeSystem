@@ -1,4 +1,6 @@
 ﻿using System.IO;
+using System.Text;
+using UnityEditor.Overlays;
 using UnityEngine;
 
 public static class SaveSystem
@@ -7,6 +9,9 @@ public static class SaveSystem
 
     public static void Save(UpgradeSaveData data)
     {
+        string saveString = BuildSaveString(data);
+        data.hash = HashUtility.GenerateHash(saveString);
+
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(SavePath, json);
     }
@@ -17,6 +22,32 @@ public static class SaveSystem
             return null;
 
         string json = File.ReadAllText(SavePath);
-        return JsonUtility.FromJson<UpgradeSaveData>(json);
+
+        UpgradeSaveData data = JsonUtility.FromJson<UpgradeSaveData>(json);
+
+        string saveString = BuildSaveString(data);
+
+        string currentHash = HashUtility.GenerateHash(saveString);
+
+        if (currentHash != data.hash)
+        {
+            throw new InvalidDataException("save file doesn't match");
+        }
+
+        return data;
+    }
+
+    private static string BuildSaveString(UpgradeSaveData data)
+    {
+        StringBuilder builder = new StringBuilder();
+
+        foreach (var attribute in data.attributes)
+        {
+            builder.Append(attribute.type);
+            builder.Append(attribute.level);
+            builder.Append(attribute.currentExperience);
+        }
+
+        return builder.ToString();
     }
 }
